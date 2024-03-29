@@ -1,0 +1,20 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "jsxSingleQuote": false,
+  "jsxQuotes": "prefer-double",
+  "bracketSpacing": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "spacedComment": ["error", "always"],
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
