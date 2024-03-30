@@ -1,3 +1,4 @@
+import React, { ForwardedRef } from 'react';
 import {
   Table,
   TableBody,
@@ -7,19 +8,22 @@ import {
   TableRow,
   Box,
   Typography,
+  TableRowProps,
+  TableCellProps,
 } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { ForwardedRef } from 'react';
 
-// type ITableDataWithUuid<T extends { uuid: string }> = T;
+const TableRowComponent = React.forwardRef(
+  (props: TableRowProps, ref: ForwardedRef<HTMLTableRowElement>) => (
+    <TableRow {...props} ref={ref} />
+  ),
+);
 
-const TableRowComponent = React.forwardRef((props, ref: ForwardedRef<HTMLTableRowElement>) => (
-  <TableRow {...props} ref={ref} />
-));
-
-const TableCellComponent = React.forwardRef((props, ref: ForwardedRef<HTMLTableCellElement>) => (
-  <TableCell {...props} ref={ref} />
-));
+const TableCellComponent = React.forwardRef(
+  (props: TableCellProps, ref: ForwardedRef<HTMLTableCellElement>) => (
+    <TableCell {...props} ref={ref} />
+  ),
+);
 
 const MotionTableRow = motion(TableRowComponent);
 const MotionTableCell = motion(TableCellComponent);

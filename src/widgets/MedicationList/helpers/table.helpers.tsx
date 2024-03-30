@@ -26,7 +26,6 @@ export const columns: ITableColType<IMedication>[] = [
   },
   {
     headerName: '',
-    colspan: 4,
     renderCell: (row) => <TableActions row={row} />,
   },
 ];
