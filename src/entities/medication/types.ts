@@ -1,7 +1,7 @@
 export interface IMedication {
   name: string;
   description: string;
-  initialCount: number;
+  intakesCount: number;
   destinationCount: number;
   uuid: string;
   updated: string;

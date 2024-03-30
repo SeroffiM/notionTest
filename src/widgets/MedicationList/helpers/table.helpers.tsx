@@ -1,6 +1,7 @@
 import { IMedication } from '@/entities/medication/types';
 import { ITableColType } from '@/shared/ui/TableComponent';
 import { Typography } from '@mui/material';
+import { TableActions } from '../ui/TableActions';
 
 export const columns: ITableColType<IMedication>[] = [
   {
@@ -12,8 +13,8 @@ export const columns: ITableColType<IMedication>[] = [
     renderCell: (row) => <Typography>{row.description}</Typography>,
   },
   {
-    headerName: 'Initial Count',
-    renderCell: (row) => <Typography>{row.initialCount}</Typography>,
+    headerName: 'Intakes Count',
+    renderCell: (row) => <Typography>{row.intakesCount}</Typography>,
   },
   {
     headerName: 'Destination Count',
@@ -21,6 +22,11 @@ export const columns: ITableColType<IMedication>[] = [
   },
   {
     headerName: 'Update Time',
-    renderCell: (row) => <Typography>{row.updated}</Typography>,
+    renderCell: (row) => <Typography>{new Date(row.updated).toLocaleString()}</Typography>,
+  },
+  {
+    headerName: '',
+    colspan: 4,
+    renderCell: (row) => <TableActions row={row} />,
   },
 ];
