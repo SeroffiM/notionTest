@@ -5,14 +5,16 @@ import { IMedication } from '@/entities/medication/types';
 import { editMedication } from '@/app/providers/MedicationProvider/store/medications.actions';
 import { MotionButton } from '@/shared/ui/MotionButton';
 
-export const TableActions = ({ row }: { row: IMedication }) => {
+export const IncrementDecrementMedication = ({ row }: { row: IMedication }) => {
   const { dispatch } = useContext(MedicationContext);
 
-  const handleIncrement = () => {
+  const handleIncrement = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
     dispatch(editMedication({ ...row, intakesCount: row.intakesCount + 1 }));
   };
 
-  const handleDecrement = () => {
+  const handleDecrement = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
     dispatch(editMedication({ ...row, intakesCount: row.intakesCount - 1 }));
   };
   const isIncrementAvailable = row.intakesCount < row.destinationCount;

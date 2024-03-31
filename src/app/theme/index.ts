@@ -6,6 +6,11 @@ export const theme = createTheme({
       '100': '#e0e0e0',
     },
   },
+  typography: {
+    h1: {
+      fontSize: '2rem',
+    },
+  },
   spacing: 4,
   components: {
     MuiTable: {

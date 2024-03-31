@@ -1,7 +1,7 @@
 import { IMedication } from '@/entities/medication/types';
 import { ITableColType } from '@/shared/ui/TableComponent';
 import { Typography } from '@mui/material';
-import { TableActions } from '../ui/TableActions';
+import { IncrementDecrementMedication } from '@/feature/medications/IncrementDecrementMedication';
 
 export const columns: ITableColType<IMedication>[] = [
   {
@@ -26,6 +26,19 @@ export const columns: ITableColType<IMedication>[] = [
   },
   {
     headerName: '',
-    renderCell: (row) => <TableActions row={row} />,
+    renderCell: (row) => <IncrementDecrementMedication row={row} />,
   },
 ];
+
+export const getSortedMedications = (medications: IMedication[]) =>
+  medications.sort((a, b) => {
+    if (a.isFulfilled && !b.isFulfilled) {
+      return 1;
+    }
+
+    if (b.isFulfilled && !a.isFulfilled) {
+      return -1;
+    }
+
+    return new Date(b.updated).getTime() - new Date(a.updated).getTime();
+  });

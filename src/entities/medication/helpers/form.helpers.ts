@@ -8,6 +8,7 @@ export const defaultValue: IMedication = {
   destinationCount: 0,
   uuid: '',
   updated: '',
+  isFulfilled: true,
 };
 
 export const schema = yup

@@ -10,6 +10,8 @@ import {
   Typography,
   TableRowProps,
   TableCellProps,
+  SxProps,
+  Theme,
 } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -31,7 +33,7 @@ const MotionTableCell = motion(TableCellComponent);
 export interface ITableComponent<T> {
   tableColumns: ITableColType<T>[];
   tableData: T[];
-  selectedRowId?: string;
+  getRowSx?: (row: T) => SxProps<Theme>;
   onSelectRow?: (row: T) => void;
 }
 
@@ -43,6 +45,8 @@ export interface ITableColType<T> {
 export const TableComponent = <T extends { uuid: string }>({
   tableColumns,
   tableData,
+  getRowSx,
+  onSelectRow,
 }: ITableComponent<T>) => {
   if (tableData.length === 0) {
     return (
@@ -51,6 +55,12 @@ export const TableComponent = <T extends { uuid: string }>({
       </Box>
     );
   }
+
+  const handleOnSelectRow = (row: T) => {
+    if (onSelectRow) {
+      onSelectRow(row);
+    }
+  };
 
   return (
     <TableContainer
@@ -69,7 +79,18 @@ export const TableComponent = <T extends { uuid: string }>({
         <TableBody>
           <AnimatePresence>
             {tableData?.map((row) => (
-              <MotionTableRow key={row.uuid} layout transition={{ type: 'spring' }}>
+              <MotionTableRow
+                onClick={() => handleOnSelectRow(row)}
+                key={row.uuid}
+                sx={{
+                  ...(onSelectRow && {
+                    cursor: 'pointer',
+                  }),
+                  ...(getRowSx && getRowSx(row)),
+                }}
+                layout
+                transition={{ type: 'spring' }}
+              >
                 {tableColumns.map((item, i) => (
                   <MotionTableCell transition={{ type: 'spring' }} key={`${row.uuid}-${i}`}>
                     {item.renderCell(row, i)}

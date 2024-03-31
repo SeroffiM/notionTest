@@ -3,13 +3,14 @@ import { Reducer, useReducer } from 'react';
 import { TMedicationsActionsTypes } from './medications.actions';
 import { medicationsReducer } from './medications.reducer';
 
-const medications = localStorage.getItem('medications');
+export type MedicationsStore = IMedication[];
 
 export const useStore = () => {
-  const [medicationsStore, dispatch] = useReducer<Reducer<IMedication[], TMedicationsActionsTypes>>(
-    medicationsReducer,
-    medications ? JSON.parse(medications) : [],
-  );
+  const medications = localStorage.getItem('medications');
+
+  const [medicationsStore, dispatch] = useReducer<
+    Reducer<MedicationsStore, TMedicationsActionsTypes>
+  >(medicationsReducer, medications ? JSON.parse(medications) : []);
 
   return { medications: medicationsStore, dispatch };
 };

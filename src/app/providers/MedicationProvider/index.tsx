@@ -10,7 +10,7 @@ export const MedicationProvider = ({ children }: { children: ReactNode }) => {
   }, [medications]);
 
   return (
-    <MedicationContext.Provider value={{ medications, dispatch }}>
+    <MedicationContext.Provider value={{ medications: [...medications], dispatch }}>
       {children}
     </MedicationContext.Provider>
   );

@@ -5,4 +5,5 @@ export interface IMedication {
   destinationCount: number;
   uuid: string;
   updated: string;
+  isFulfilled: boolean;
 }
