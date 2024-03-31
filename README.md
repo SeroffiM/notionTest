@@ -15,6 +15,7 @@ To set up the development environment and install the project's dependencies, fo
    `git clone https://github.com/SeroffiM/notionTest.git`
 2. Navigate to the project's root directory:
    `cd notionTest`
+   Or download Zip Archive from the link above, unzip it and open root directory in your terminal
 3. Install the dependencies:
    Using Yarn:
    `yarn install`
