@@ -38,6 +38,6 @@ The production-ready files will be generated in the `dist` folder.
 
 ## Serve
 
-To serve the production build locally for testing, run the following command:
+To serve the production build locally for testing, you need to have a global `serve` package. `yarn add global serve`. After that run the following command:
 Using Yarn:
 `yarn serve`
