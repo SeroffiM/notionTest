@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+## React Medication Intake Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An application which tracks user’s medication intake. Built with React, TypeScript, Vite, MaterialUi, Framer Motion and Sass.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js v18.x.x or higher
+- Yarn v1.22.x or higher (optional, you can use npm if you prefer)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To set up the development environment and install the project's dependencies, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone the repository or download Zip Archive:
+   `git clone https://github.com/SeroffiM/notionTest.git`
+2. Navigate to the project's root directory:
+   `cd notionTest`
+3. Install the dependencies:
+   Using Yarn:
+   `yarn install`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Development
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To start the development server, run the following command:
+Using Yarn:
+`yarn dev`
+The development server will run on `http://localhost:3000` by default. You can change the port in the Vite configuration file if needed.
+
+## Build
+
+To create a production build, run the following command:
+Using Yarn:
+`yarn build`
+
+The production-ready files will be generated in the `dist` folder.
+
+## Serve
+
+To serve the production build locally for testing, run the following command:
+Using Yarn:
+`yarn serve`
