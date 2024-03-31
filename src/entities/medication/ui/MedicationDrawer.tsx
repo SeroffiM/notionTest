@@ -32,7 +32,7 @@ export const MedicationDrawer = ({ medication, onClose, ...props }: IMedicationD
   } = methods;
 
   const handleOnClose = () => {
-    reset({}, { keepIsSubmitted: false });
+    reset();
     onClose();
   };
 

@@ -18,7 +18,7 @@ export const MedicationList = () => {
   const sortedMedications = useMemo(() => getSortedMedications(medications), [medications]);
 
   return (
-    <Box>
+    <Box overflow="auto">
       <TableComponent<IMedication>
         onSelectRow={handleOnSelectRow}
         getRowSx={(row) =>

@@ -29,7 +29,7 @@ const MedicationItem = () => {
   return (
     <>
       <Box>
-        <Box display="flex">
+        <Box display="flex" justifyContent="flex-end">
           <Button variant="contained" onClick={handleDelete}>
             Delete
           </Button>
@@ -39,7 +39,7 @@ const MedicationItem = () => {
             </Button>
           </Box>
         </Box>
-        <Box display="flex" justifyContent="center">
+        <Box mt={3} display="flex" justifyContent="center">
           {item && <MedicationCard medication={item} />}
         </Box>
         <Box mt={10} display="flex" justifyContent="center">

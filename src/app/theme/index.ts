@@ -23,11 +23,14 @@ export const theme = createTheme({
     },
     MuiTableCell: {
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
           ['&::not(:first-child)']: {
             textAlign: 'right',
           },
-        },
+          [theme.breakpoints.down('md')]: {
+            padding: theme.spacing(2.5),
+          },
+        }),
       },
     },
   },
