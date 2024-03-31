@@ -20,7 +20,7 @@ const MedicationItem = () => {
     if (!item) {
       navigate('/');
     }
-  }, [item]);
+  }, [item, navigate]);
 
   const handleDelete = () => {
     dispatch(deleteMedication(item?.uuid || ''));
@@ -55,4 +55,6 @@ const MedicationItem = () => {
   );
 };
 
-export default withBasicProvider(MedicationProvider)(MedicationItem);
+const MedicationItemWithProvider = withBasicProvider(MedicationProvider)(MedicationItem);
+
+export default MedicationItemWithProvider;

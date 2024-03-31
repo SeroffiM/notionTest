@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router';
 import { router } from './app/router';
-import '@/app/styles/global.scss';
+import '@/app/styles/styles.scss';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './app/theme';
 

@@ -5,8 +5,6 @@ import { useContext, useRef } from 'react';
 import { MedicationContext } from '@/app/providers/MedicationProvider/medication.context';
 import { addMedicationNote } from '@/app/providers/MedicationProvider/store/medications.actions';
 
-import './styles.scss';
-
 export const MedicationNotes = ({ medication }: { medication: IMedication }) => {
   const ref = useRef<HTMLTextAreaElement | null>(null);
   const { dispatch } = useContext(MedicationContext);

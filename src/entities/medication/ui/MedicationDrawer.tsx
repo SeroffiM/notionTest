@@ -56,11 +56,11 @@ export const MedicationDrawer = ({ medication, onClose, ...props }: IMedicationD
     if (medication) {
       reset(medication);
     }
-  }, [medication]);
+  }, [medication, reset]);
 
   useEffect(() => {
     reset();
-  }, [isSubmitSuccessful]);
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <DrawerComponent
