@@ -1,46 +1,53 @@
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
 import { MedicationProvider } from '@/app/providers/MedicationProvider';
 import { MedicationContext } from '@/app/providers/MedicationProvider/medication.context';
-import { IncrementDecrementMedication } from '@/feature/medications/IncrementDecrementMedication';
+import { deleteMedication } from '@/app/providers/MedicationProvider/store/medications.actions';
 import { withBasicProvider } from '@/shared/utils/withProviders.utils';
-import { Box, Card, CardContent, Typography } from '@mui/material';
-import { useContext } from 'react';
-import { useParams } from 'react-router';
+import { MedicationCard } from '@/widgets/medications/MedicationCard';
+import { Box, Button } from '@mui/material';
+import { MedicationDrawer } from '@/entities/medication/ui/MedicationDrawer';
 
 const MedicationItem = () => {
+  const navigate = useNavigate();
   const { uuid } = useParams<{ uuid: string }>();
-  const { medications } = useContext(MedicationContext);
+  const { medications, dispatch } = useContext(MedicationContext);
+  const [openIsModal, setIsOpenModal] = useState(false);
   const item = medications.find((v) => v.uuid === uuid);
-  console.log(medications);
-  if (!item) {
-    return (
-      <Box>
-        <Typography>No item</Typography>
-      </Box>
-    );
-  }
+
+  useEffect(() => {
+    if (!item) {
+      navigate('/');
+    }
+  }, [item]);
+
+  const handleDelete = () => {
+    dispatch(deleteMedication(item?.uuid || ''));
+  };
 
   return (
-    <Box>
-      <Box></Box>
-      <Box display="flex" justifyContent="center">
-        <Card
-          sx={{
-            width: (theme) => theme.spacing(100),
-          }}
-        >
-          <CardContent>
-            <Typography variant="h1" gutterBottom>
-              {item.name}
-            </Typography>
-            <Typography gutterBottom>{item.description}</Typography>
-            <Typography>
-              {item.intakesCount} / {item.destinationCount}
-            </Typography>
-            <IncrementDecrementMedication row={item} />
-          </CardContent>
-        </Card>
+    <>
+      <Box>
+        <Box display="flex">
+          <Button variant="contained" onClick={handleDelete}>
+            Delete
+          </Button>
+          <Box ml={2}>
+            <Button variant="contained" onClick={() => setIsOpenModal(true)}>
+              Edit
+            </Button>
+          </Box>
+        </Box>
+        <Box display="flex" justifyContent="center">
+          {item && <MedicationCard medication={item} />}
+        </Box>
       </Box>
-    </Box>
+      <MedicationDrawer
+        open={openIsModal}
+        medication={item}
+        onClose={() => setIsOpenModal(false)}
+      />
+    </>
   );
 };
 

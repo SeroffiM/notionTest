@@ -5,20 +5,21 @@ import { IMedication } from '@/entities/medication/types';
 import { editMedication } from '@/app/providers/MedicationProvider/store/medications.actions';
 import { MotionButton } from '@/shared/ui/MotionButton';
 
-export const IncrementDecrementMedication = ({ row }: { row: IMedication }) => {
+export const IncrementDecrementMedication = ({ medication }: { medication: IMedication }) => {
   const { dispatch } = useContext(MedicationContext);
 
   const handleIncrement = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    dispatch(editMedication({ ...row, intakesCount: row.intakesCount + 1 }));
+    dispatch(editMedication({ ...medication, intakesCount: medication.intakesCount + 1 }));
   };
 
   const handleDecrement = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    dispatch(editMedication({ ...row, intakesCount: row.intakesCount - 1 }));
+    dispatch(editMedication({ ...medication, intakesCount: medication.intakesCount - 1 }));
   };
-  const isIncrementAvailable = row.intakesCount < row.destinationCount;
-  const isDecrementAvailable = row.intakesCount > 0;
+  const intakedCounts = medication.intakesCount;
+  const isIncrementAvailable = intakedCounts < medication.destinationCount;
+  const isDecrementAvailable = intakedCounts > 0;
 
   return (
     <Box display="flex">

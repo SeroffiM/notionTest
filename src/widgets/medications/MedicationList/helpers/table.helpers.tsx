@@ -26,7 +26,7 @@ export const columns: ITableColType<IMedication>[] = [
   },
   {
     headerName: '',
-    renderCell: (row) => <IncrementDecrementMedication row={row} />,
+    renderCell: (row) => <IncrementDecrementMedication medication={row} />,
   },
 ];
 

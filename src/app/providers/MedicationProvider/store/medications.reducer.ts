@@ -27,8 +27,9 @@ export const medicationsReducer = (
       return state.map((item) => (item.uuid === medication.uuid ? newMedication : item));
     }
 
-    case EMedicationsActionsTypes.DELETE_MEDICATION:
+    case EMedicationsActionsTypes.DELETE_MEDICATION: {
       return state.filter((item) => item.uuid !== action.payload);
+    }
 
     default:
       return state;

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import { MedicationList } from '@/widgets/MedicationList';
 import { Button } from '@mui/material';
 import { MedicationDrawer } from '@/entities/medication/ui/MedicationDrawer';
 import { MedicationProvider } from '@/app/providers/MedicationProvider';
+import { MedicationList } from '@/widgets/medications/MedicationList';
 
 const Medications = () => {
   const [isAddMedicationOpen, setIsAddMedicationOpen] = useState(false);
