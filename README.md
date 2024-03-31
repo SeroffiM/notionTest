@@ -4,7 +4,7 @@ An application which tracks user’s medication intake. Built with React, TypeSc
 
 ## Prerequisites
 
-- Node.js v18.x.x or higher
+- Node.js v20.0.0 or higher
 - Yarn v1.22.x or higher (optional, you can use npm if you prefer)
 
 ## Installation
