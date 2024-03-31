@@ -6,4 +6,10 @@ export interface IMedication {
   uuid: string;
   updated: string;
   isFulfilled: boolean;
+  notes: IMedicationNote[];
+}
+
+export interface IMedicationNote {
+  note: string;
+  uuid: string;
 }

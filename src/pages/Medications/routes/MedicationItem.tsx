@@ -7,6 +7,7 @@ import { withBasicProvider } from '@/shared/utils/withProviders.utils';
 import { MedicationCard } from '@/widgets/medications/MedicationCard';
 import { Box, Button } from '@mui/material';
 import { MedicationDrawer } from '@/entities/medication/ui/MedicationDrawer';
+import { MedicationNotes } from '@/widgets/medications/MedicationNotes';
 
 const MedicationItem = () => {
   const navigate = useNavigate();
@@ -40,6 +41,9 @@ const MedicationItem = () => {
         </Box>
         <Box display="flex" justifyContent="center">
           {item && <MedicationCard medication={item} />}
+        </Box>
+        <Box mt={10} display="flex" justifyContent="center">
+          {item && <MedicationNotes medication={item} />}
         </Box>
       </Box>
       <MedicationDrawer

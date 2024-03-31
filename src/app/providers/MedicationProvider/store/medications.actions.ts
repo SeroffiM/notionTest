@@ -3,6 +3,7 @@ export enum EMedicationsActionsTypes {
   ADD_MEDICATION = 'ADD_MEDICATION',
   EDIT_MEDICATION = 'EDIT_MEDICATION',
   DELETE_MEDICATION = 'DELETE_MEDICATION',
+  ADD_NOTE = 'ADD_NOTE',
 }
 
 export const addMedication = (medication: IMedication) => ({
@@ -20,7 +21,13 @@ export const deleteMedication = (uuid: string) => ({
   payload: uuid,
 });
 
+export const addMedicationNote = (uuid: string, note: string) => ({
+  type: EMedicationsActionsTypes.ADD_NOTE as EMedicationsActionsTypes.ADD_NOTE,
+  payload: { uuid, note },
+});
+
 export type TMedicationsActionsTypes =
   | ReturnType<typeof addMedication>
   | ReturnType<typeof editMedication>
-  | ReturnType<typeof deleteMedication>;
+  | ReturnType<typeof deleteMedication>
+  | ReturnType<typeof addMedicationNote>;

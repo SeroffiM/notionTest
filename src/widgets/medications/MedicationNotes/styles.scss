@@ -1,0 +1,38 @@
+.medications-note {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+
+  &__container {
+    padding: 20px;
+  }
+
+  &__text-area {
+    padding: 5px;
+    width: 100% !important;
+  }
+
+  &__add-btn {
+    &-wrapper {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__list {
+    margin-top: 20px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+
+    &:not(&:first-child) {
+      margin-top: 10px;
+    }
+  }
+}

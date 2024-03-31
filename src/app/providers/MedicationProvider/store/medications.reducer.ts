@@ -31,6 +31,13 @@ export const medicationsReducer = (
       return state.filter((item) => item.uuid !== action.payload);
     }
 
+    case EMedicationsActionsTypes.ADD_NOTE: {
+      const { uuid, note } = action.payload;
+      return state.map((item) =>
+        item.uuid === uuid ? { ...item, notes: [...item.notes, { note, uuid: v4() }] } : item,
+      );
+    }
+
     default:
       return state;
   }
